@@ -6,5 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'dev-huddle';
+  shoppingCartModel: ShoppingCartModel | undefined;
+
+  getOriginalTotal(): number {
+    return this.shoppingCartModel?.numOfItems! * this.shoppingCartModel?.priceUnit!;
+  }
+
+  onClick(event: ShoppingCartModel) {
+    this.shoppingCartModel = event;
+  }
+}
+
+export interface ShoppingCartModel {
+  numOfItems: number | undefined,
+  priceUnit: number | undefined,
+  stateCode: string | undefined,
+  totalPrice: number | undefined
 }
